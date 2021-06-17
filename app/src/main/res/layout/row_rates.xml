@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.wmt.sajid.models.Results" />
+        <variable
+            name="utils"
+            type="com.wmt.sajid.utils.Utils" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp"
+        android:layout_margin="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageview"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="4dp"
+                android:layout_alignParentStart="true"
+                app:imageUrl="@{model.picture.thumbnail}">
+            </de.hdodenhof.circleimageview.CircleImageView>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageview"
+                android:text="@{model.name.first+' '+model.name.last}"
+                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.email}"
+                android:layout_toEndOf="@id/imageview"
+                android:layout_below="@id/textView"
+                android:layout_margin="4dp"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageview"
+                android:layout_below="@id/textView1"
+                android:text="@{utils.Companion.convertToNewFormat(model.dob.date)}"
+                android:layout_margin="4dp"
+                android:textColor="@color/black">
+            </TextView>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
